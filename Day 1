@@ -1,0 +1,285 @@
+1.Min element in the array
+import java.util.*;
+ 
+public class Min {
+ 
+  public static void main(String args[]) {
+ 
+    int arr1[] =  {2,5,1,3,0};
+    System.out.println("The smallest element in the array is: "+SmallestElement(arr1));
+ 
+    int arr2[] =  {8,10,5,7,9};
+    System.out.println("The smallest element in the array is: "+SmallestElement(arr2));
+  }
+  static int SmallestElement(int arr[]) {
+    int min = arr[0];
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] < min) {
+        min = arr[i];
+      }
+    }
+    return min;
+  }
+}
+
+2.Max element in the array
+
+
+import java.util.*;
+public class tuf {
+ 
+  public static void main(String args[]) {
+ 
+    int arr1[] =  {2,5,1,3,0};
+    System.out.println("The Largest element in the array is: "+findLargestElement(ar
+    r1));
+ 
+    int arr2[] =  {8,10,5,7,9};
+    System.out.println("The Largest element in the array is: "+findLargestElement(ar
+    r2));
+  }
+  static int findLargestElement(int arr[]) {
+    int max= arr[0];
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] > max) {
+        max= arr[i];
+      }
+    }
+    return max;
+  }
+
+3.Second small and Largest element in the array
+
+import java.io.*;
+class Test
+{
+static private int secondSmallest(int[] arr, int n)
+{
+	if (n < 2)
+	{
+		return -1;
+	}
+	int small = Integer.MAX_VALUE;
+	int second_small = Integer.MAX_VALUE;
+	int i;
+	for (i = 0; i < n; i++)
+	{
+	   if (arr[i] < small)
+	   {
+		  second_small = small;
+		  small = arr[i];
+	   }
+	   else if (arr[i] < second_small && arr[i] != small)
+	   {
+		  second_small = arr[i];
+	   }
+	}
+   return second_small;
+}
+static private int secondLargest(int[] arr, int n)
+{
+	if(n<2)
+	return -1;
+	int large = Integer.MIN_VALUE;
+	int second_large = Integer.MIN_VALUE;
+	int i;
+	for (i = 0; i < n; i++)
+	{
+		if (arr[i] > large)
+		{
+			second_large = large;
+			large = arr[i];
+		}
+
+		else if (arr[i] > second_large && arr[i] != large)
+		{
+			second_large = arr[i];
+		}
+	}
+	return second_large;
+}
+
+public static void main(String[] args)
+{
+	int[] arr = {1, 2, 4, 7, 7, 5};
+	int n = arr.length;
+		int sS = secondSmallest(arr, n);
+		int sL = secondLargest(arr, n);
+	System.out.println("Second smallest is "+sS);
+	System.out.println("Second largest is "+sL);
+}
+
+}
+
+4.Reverse a array
+
+public class Main {
+  static void printArray(int ans[], int n) {
+      System.out.print("Reversed array is:- \n");
+      for (int i = 0; i < n; i++) {
+         System.out.print(ans[i] + " ");
+      }
+   }
+   static void reverseArray(int arr[], int n) {
+      int[] ans = new int[n];
+      for (int i = n - 1; i >= 0; i--) {
+         ans[n - i - 1] = arr[i];
+      }
+      printArray(ans, n);
+   }
+   public static void main(String[] args) {
+      int n = 5;
+      int arr[] = { 5, 4, 3, 2, 1};
+      reverseArray(arr, n);
+   }
+}
+
+5.Count frequency of each element in the array
+
+import java.util.*;
+ 
+public class tuf {
+ 
+public static void main(String args[]){  
+   
+      int arr[] ={10,5,10,15,10,5};
+      int n = arr.length;
+      countFreq(arr, n);  
+  }
+public static void countFreq(int arr[], int n)
+{
+    boolean visited[] = new boolean[n];
+ 
+    for (int i = 0; i < n; i++) {
+ 
+        // Skip this element if already processed
+        if (visited[i] == true)
+            continue;
+ 
+        // Count frequency
+        int count = 1;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                visited[j] = true;
+                count++;
+            }
+        }
+        System.out.println(arr[i] + " " + count);
+    }
+}
+}
+6.Rearrange array in increasing-decreasing order
+import java.util.Arrays;
+public class Main {
+
+  public static void main(String args[]) {
+
+    int arr[] = {8,7,1,6,5,9};
+    int n = arr.length;
+    Arrays.sort(arr);
+    for (int i = 0; i < n / 2; i++) {
+      System.out.print(arr[i] + " ");
+    }
+    for (int i = n - 1; i >= n / 2; i--) {
+      System.out.print(arr[i] + " ");
+    }
+}
+}
+
+7.Calculate Sum of the Elements of the Array
+import java.util.*;
+public class Main {
+  public static void main(String args[]) {
+    int n = 5;
+    int arr[] = {1,2,3,4,5};
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+      sum += arr[i];
+    }
+    System.out.println("The sum of the elements of the array is "+sum);
+  }
+}
+
+8.Rotate array by K elements : Block Swap Algorithm
+import java.util.*;
+public class Main {
+  public static void swap(int[] arr, int a, int b, int k) {
+    for (int i = 0; i < k; i++) {
+      int temp = arr[a + i];
+      arr[a + i] = arr[b + i];
+      arr[b + i] = temp;
+    }
+  }
+  public static void BlockSwap(int[] arr, int i, int k, int n) {
+    if (k == 0 || k == n)
+      return;
+    // If first part and second part are of same size
+    if (k == n - k) {
+      swap(arr, i, n - k + i, k);
+      return;
+    }
+    // If first part of array is of smaller size
+    else if (k < n - k) {
+      swap(arr, i, n - k + i, k);
+      BlockSwap(arr, i, k, n - k); // second part of array is taken now
+    }
+    // If second part of array is of smaller size
+    else {
+      swap(arr, i, k, n - k);
+      BlockSwap(arr, n - k + i, 2 * k - n, k);
+    }
+  }
+  public static void main(String args[]) {
+    int[] arr = {1,2,3,4,5,6,7};
+    int n = 7;
+    int k = 2;
+    BlockSwap(arr, 0, k, n);
+    System.out.println("After Rotating the array ");
+    for (int i = 0; i < n; i++)
+      System.out.print(arr[i] + " ");
+  }
+}
+
+9.Average of all the elements in the array
+public class Main {
+  public static void main(String args[]) {
+    int n = 5;
+    int arr[] = {1,2,3,4,5};
+    //using double as average can be in decimal.
+    double sum = 0;
+    for (int i = 0; i < n; i++) {
+      sum += (double) arr[i];
+    }
+    double average = sum / n;
+    System.out.println("The average is "+average);
+  }
+}
+
+10.Find Median of the given Array
+import java.io.*;
+import java.util.Arrays;
+class Test
+{
+static private void getMedian(int[] arr, int n)
+{
+	Arrays.sort(arr);
+	
+	if (n % 2 == 0)
+	{
+		int ind1 = (n / 2) - 1;
+		int ind2 = (n / 2);
+		System.out.print((double)(arr[ind1] + arr[ind2]) / 2);
+	}
+	else
+	{
+		System.out.print(arr[(n / 2)]);
+	}
+}
+public static void main(String[] args)
+{
+	int[] arr = {4, 7, 1, 2, 5, 6};
+	int n = 6;
+	System.out.print("The median of the array is: ");
+	getMedian(arr, n);
+}
+}
