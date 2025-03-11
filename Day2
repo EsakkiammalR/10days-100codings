@@ -1,0 +1,122 @@
+1.Remove Duplicates in sorted array
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+       int arr[] = {1,1,2,2,2,3,3,4,5,5};
+        int k = removeDuplicates(arr);
+        System.out.println("The array after removing duplicate elements is ");
+        for (int i = 0; i < k; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+    static int removeDuplicates(int[] arr) {
+        int i = 0;
+        for (int j = 1; j < arr.length; j++) {
+            if (arr[i] < arr[j]) {
+                i++;
+                arr[i+1] = arr[j];
+            }
+        }
+        return i + 1;
+    }
+}
+
+2.Remove Duplicates in unsorted array
+public class Main {
+
+       static void duplicate(int arr[], int n) {
+              HashMap<Integer, Integer> mp = new HashMap<>();
+
+              for (int i = 0; i < n; i++) {
+                     if (!mp.containsKey(arr[i])) {
+                            System.out.print(arr[i] + " ");
+                            mp.put(arr[i], 1);
+                     }
+              }
+       }
+
+       public static void main(String[] args) {
+              int n = 9;
+              int arr[] = { 4, 3, 9, 2, 4, 1, 10, 89, 34 };
+
+              duplicate(arr, n);
+       }
+}
+
+3.Adding Elements
+import java.util.*;
+
+class Main {
+    public static void main(String args[]) {
+        List<Integer> arr = new ArrayList<>(Arrays.asList(10, 9, 14, 8, 20, 48, 16, 9));
+        
+        System.out.println("Original List: " + arr);
+        
+        int value = 40;
+        
+        // Insert at Beginning
+        arr.add(0, value);
+        System.out.println("After inserting at beginning: " + arr);
+        
+        // Insert at End
+        arr.add(value);
+        System.out.println("After inserting at end: " + arr);
+        
+        // Insert at Specific Position (e.g., index 3)
+        int position = 3;
+        if (position >= 0 && position <= arr.size()) {
+            arr.add(position, value);
+            System.out.println("After inserting at position " + position + ": " + arr);
+        } else {
+            System.out.println("Invalid position for insertion.");
+        }
+    }
+}
+4.Find all repeating elements in an array
+import java.util.HashSet;
+
+public class Main {
+    static void findRepeatingElements(int arr[]) {
+        HashSet<Integer> seen = new HashSet<>();
+        System.out.print("The repeating elements are: ");
+        
+        for (int num : arr) {
+            if (!seen.add(num)) {  // If add() returns false, it's a duplicate
+                System.out.print(num + " ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 2, 3, 4, 4, 5, 2};
+        findRepeatingElements(arr);
+    }
+}
+
+5.Find all non repeating elements in an array
+import java.util.HashMap;
+
+public class Main {
+    static void findNonRepeatingElements(int arr[]) {
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+
+        // Count occurrences of each element
+        for (int num : arr) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+        }
+
+        System.out.print("The non-repeating elements are: ");
+        for (int num : arr) {
+            if (freqMap.get(num) == 1) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 1, 2, 3, 4, 4, 5, 2};
+        findNonRepeatingElements(arr);
+    }
+}
+
+
