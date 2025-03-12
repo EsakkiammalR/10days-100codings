@@ -115,8 +115,378 @@ public class Main {
 
     public static void main(String[] args) {
         int[] arr = {1, 1, 2, 3, 4, 4, 5, 2};
+    }
+}
+
+6.Find all Symmetric Pairs in the array of pairs
+
+import java.util.*;
+class SymmetricPairs {
+    public static void main(String[] args) {
+        HashMap <Integer,Integer> mp=new HashMap<Integer,Integer>();
+        int arr[][]={{1,2},{2,3},{3,2},{4,1},{2,1}};
+        System.out.println("The Symmetric Value pairs are");
+        for(int i=0;i<arr.length;i++){
+        int first=arr[i][0];
+        int second=arr[i][1];
+        if(mp.get(first)!=null&&mp.get(first)==second){
+          System.out.println(+first + "," + second );
+        }
+        else{
+            mp.put(second,first);
+        }
+       
+    }
+}
+
+7.Maximum Product Subarray in an Array
+import java.util.*;
+
+class MaxProductSubarray {
+    public static void main(String[] args) {
+        int nums[] = {1, 2, -3, 0, -4, -5};  // Example input array
+
+        int n = nums.length;  // Get array length
+        int prod1 = nums[0], prod2 = nums[0], maxProduct = nums[0];
+
+        for (int i = 1; i < n; i++) {
+            int temp = Math.max(nums[i], Math.max(prod1 * nums[i], prod2 * nums[i]));
+            prod2 = Math.min(nums[i], Math.min(prod1 * nums[i], prod2 * nums[i]));
+            prod1 = temp;
+
+            maxProduct = Math.max(maxProduct, prod1);
+        }
+
+        System.out.println("Maximum product subarray is: " + maxProduct);
+    }
+}
+
+8.Max sum in subarray
+class maxsum {
+    public static void main(String[] args) {
+        int cursum=0;
+        int maxsum=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            int temp=cursum+num[i];
+            if(cursum<nums[i]){
+                cursum=num[i];
+            }
+            else{
+                cursum=temp;
+            }
+            if(cursum>maxsum){
+                maxsum=cursum
+            }
+        }
+       
+    }
+}
+
+9.Replace elements by its rank in the array
+import java.util.*;
+public class Main {
+  public static void main(String args[]) {
+    int arr[] = {20,15,26,2,98,6};
+    HashMap < Integer, Integer > mp = new HashMap < Integer, Integer > ();
+    int temp = 1;
+    int n = arr.length;
+    int brr[] = new int[n];
+    for (int i = 0; i < n; i++) {
+      brr[i] = arr[i];
+    }
+    Arrays.sort(brr);
+    for (int i = 0; i < n; i++) {
+      //if element is previously not store in the map
+      if (mp.get(brr[i]) == null) {
+        mp.put(brr[i], temp);
+        temp++;
+      }
+    }
+    for (int i = 0; i < n; i++) {
+      System.out.print(mp.get(arr[i]) + " ");
+    }
+  }
+}
+
+}
         findNonRepeatingElements(arr);
     }
 }
 
+10.Sort Elements of an Array by Frequency
+import java.util.*;
+class Pair{
+    int first;
+    int second;
+    Pair(int first,int second)
+    {
+        this.first=first;
+        this.second=second;
+    }
+    Pair()
+    {
+        
+    }
+}
+class TUF{
+static void Sortelementsbyfreq(int arr[], int n)
+{
+  HashMap<Integer, Integer> map=new HashMap<>();
+  for (int i = 0; i < n; i++)
+  {
+      
+    map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+  }
+  ArrayList<Pair> vec=new ArrayList<>();
+  for (int x:map.keySet())
+  {
+    vec.add(new Pair(x,map.get(x)));
+  }
+    Collections.sort(vec,(a,b)->{
+        if(a.second==b.second)
+        return a.first-b.first;
+        else
+        return b.second-a.second;
+    });
+  for (int i = 0; i < vec.size(); i++)
+  {
+    while (vec.get(i).second > 0)
+    {
+      System.out.print(vec.get(i).first+" ");
+      vec.get(i).second--;
+    }
+  }
+  
+}
+public static void main(String args[])
+{
+  int arr[] = {3, 3, 5, 2, 1, 1, 2};
+  int n = 7;
+  Sortelementsbyfreq(arr, n);
+ 
+}
+}
 
+11.Rotate array by K elements
+import java.util.*;
+public class Main {
+  // Function to Reverse the array
+  public static void Reverse(int[] arr, int start, int end) {
+    while (start <= end) {
+      int temp = arr[start];
+      arr[start] = arr[end];
+      arr[end] = temp;
+      start++;
+      end--;
+    }
+  }
+  // Function to Rotate k elements to left
+  public static void Rotateeletoleft(int[] arr, int n, int k) {
+    // Reverse first k elements
+    Reverse(arr, 0, k - 1);
+    // Reverse last n-k elements
+    Reverse(arr, k , n - 1);
+    // Reverse whole array
+    Reverse(arr, 0, n - 1);
+  }
+  public static void main(String args[]) {
+    int[] arr = {1,2,3,4,5,6,7};
+    int n = 7;
+    int k = 2;
+    Rotateeletoleft(arr, n, k);
+    System.out.print("After Rotating the k elements to left ");
+    for (int i = 0; i < n; i++)
+      System.out.print(arr[i] + " ");
+    System.out.println();
+  }
+}
+
+12.Finding Equilibrium index in an array
+import java.util.*;
+ 
+class Main {
+  public static int findEquilibriumIdx(int nums[], int n) {
+    int totalSum = 0;
+    for (int i = 0; i < n; i++) {
+      totalSum += nums[i];
+    }
+    int leftSum = 0, rightSum = totalSum;
+    for (int i = 0; i < n; i++) {
+      rightSum -= nums[i];
+      if (leftSum == rightSum) {
+        return i;
+      }
+      leftSum += nums[i];
+    }
+    return -1;
+  }
+  public static void main(String[] args) {
+    int n = 5;
+    int nums[] = {2, 3, -1, 8, 4};
+    int equilibriumidx = findEquilibriumIdx(nums, n);
+    System.out.println(equilibriumidx);
+ 
+  }
+}
+
+13.Finding Circular rotation of an array by K positions
+import java.util.Arrays;
+
+public class CircularRotation {
+    // Function to rotate the array by K positions
+    public static void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n; // Handle cases where k > n
+        
+        // Reverse the entire array
+        reverse(nums, 0, n - 1);
+        // Reverse the first k elements
+        reverse(nums, 0, k - 1);
+        // Reverse the remaining elements
+        reverse(nums, k, n - 1);
+    }
+    
+    // Function to reverse a portion of the array
+    private static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int k = 3;
+        
+        System.out.println("Original array: " + Arrays.toString(nums));
+        rotate(nums, k);
+        System.out.println("Rotated array: " + Arrays.toString(nums));
+    }
+}
+
+14.Sort an array according to the order defined by another array
+import java.util.*;
+
+public class RelativeSorting {
+    public static int[] relativeSortArray(int[] arr, int[] order) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        
+        // Count frequency of each number in arr
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Result array
+        int[] result = new int[arr.length];
+        int index = 0;
+
+        // Place elements as per the order array
+        for (int num : order) {
+            if (frequencyMap.containsKey(num)) {
+                int count = frequencyMap.get(num);
+                for (int i = 0; i < count; i++) {
+                    result[index++] = num;
+                }
+                frequencyMap.remove(num); // Remove processed elements
+            }
+        }
+
+        // Collect remaining elements and sort them
+        List<Integer> remaining = new ArrayList<>();
+        for (int num : frequencyMap.keySet()) {
+            int count = frequencyMap.get(num);
+            for (int i = 0; i < count; i++) {
+                remaining.add(num);
+            }
+        }
+        Collections.sort(remaining); // Sort remaining elements
+
+        // Add remaining elements to the result
+        for (int num : remaining) {
+            result[index++] = num;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 1, 2, 5, 7, 1, 9, 3, 6, 8, 8};
+        int[] order = {2, 1, 8, 3};
+
+        int[] sortedArr = relativeSortArray(arr, order);
+        System.out.println(Arrays.toString(sortedArr));
+    }
+}
+
+15.Search an Element in an Array
+public class Main {
+  public static void main(String args[]) {
+    int arr[] = {6,7,9,5,3,10};
+    int n = arr.length;
+    int k = 10;
+    int low = 0, high = n - 1;
+    int ans = -1;
+    while (low <= high) {
+      int mid = (low + high) / 2;
+      if (arr[mid] > k) {
+        high = mid - 1;
+      } else if (arr[mid] < k) {
+        low = mid + 1;
+      } else {
+        ans = mid;
+        break;
+      }
+    }
+    System.out.print("The element is present in "+ans+" index");
+  }
+}
+
+16.Check if array is subset of another array
+import java.io.*;
+import java.util.*;
+
+class takeuforward {
+
+  static boolean bSearch(int elem, int arr[], int n) {
+    int start = 0;
+    int end = n - 1;
+    while (start <= end) {
+      int mid = (start + end) / 2;
+      if (arr[mid] == elem)
+        return true;
+      else if (arr[mid] < elem)
+        start = mid + 1;
+      else end = mid - 1;
+    }
+    return false;
+  }
+
+  static boolean isSubset(int arr1[], int m, int arr2[], int n) {
+    if (m > n) return false;
+    Arrays.sort(arr2);
+    for (int i = 0; i < m; i++) {
+      boolean present = bSearch(arr1[i], arr2, n);
+      if (present == false) return false;
+    }
+    return true;
+  }
+
+  public static void main(String[] args) {
+
+    int arr1[]={1,3,4,5,2};
+	int arr2[]={2,4,3,1,7,5,15};
+
+    int m = arr1.length;
+    int n = arr2.length;
+
+    boolean ans = isSubset(arr1, m, arr2, n);
+
+    if (ans == true)
+      System.out.print("arr1[] is a subset of arr2[]");
+    else System.out.print("arr1[] is not a subset of arr2[]");
+
+  }
+}
