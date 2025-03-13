@@ -1,0 +1,339 @@
+1.Check if a number is Palindrome or Not
+public class Main {
+
+    // Function to check if a
+    // given integer is a palindrome
+    static boolean palindrome(int n) {
+        // Initialize a variable to
+        // store the reverse of the number
+        int revNum = 0;
+        // Create a duplicate variable to
+        // store the original number
+        int dup = n;
+        // Iterate through each digit of
+        // the number until it becomes 0
+        while (n > 0) {
+            // Extract the last
+            // digit of the number
+            int ld = n % 10;
+            // Build the reverse number
+            // by appending the last digit
+            revNum = (revNum * 10) + ld;
+            // Remove the last digit
+            // from the original number
+            n = n / 10;
+        }
+        // Check if the original number
+        // is equal to its reverse
+        if (dup == revNum) {
+            // If equal, return true
+            // indicating it's a palindrome
+            return true;
+        } else {
+            // If not equal, return false
+            // indicating it's not a palindrome
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        int number = 4554;
+
+        if (palindrome(number)) {
+            System.out.println(number + " is a palindrome.");
+        } else {
+            System.out.println(number + " is not a palindrome.");
+        }
+    }
+}
+
+2.Find all Palindrome Numbers in a given range
+public class tuf {
+      static boolean isPalindrome(int n)
+        {
+             
+            int reverse = 0;
+            int temp = n;
+            while(temp>0) {
+                reverse = reverse*10 + temp%10;
+                temp = temp/10;
+            }
+                 
+            // If n and reverse are same,
+            // then n is palindrome
+           if(n==reverse)return true;
+           return false;
+        }
+       
+        public static void main(String args[])
+        {
+            int min = 100;
+            int max = 150;
+            for(int i=min; i<=max; i++) {
+                if(isPalindrome(i)) {
+                    System.out.print(i + " ");
+                }
+            }
+     
+        }
+}
+
+3.Check if a number is prime or not
+import java.util.*;
+
+public class Main {
+
+    // Function to check if a
+    // given number is prime.
+    static boolean checkPrime(int n){ 
+
+        // Initialize a counter variable to
+        // count the number of factors.
+        int cnt = 0;
+
+        // Loop through numbers from 1
+        // to the square root of n.
+        for(int i = 1; i <= Math.sqrt(n); i++){ 
+
+            // If n is divisible by i
+            // without any remainder.
+            if(n % i == 0){ 
+
+                // Increment the counter.
+                cnt = cnt + 1;
+
+                // If n is not a perfect square,
+                // count its reciprocal factor.
+                if(n / i != i){
+                    cnt = cnt + 1;
+                }
+            }
+        }
+
+        // If the number of
+        // factors is exactly 2.
+        if(cnt == 2){
+             // Return true, indicating
+             // that the number is prime.
+            return true;
+        }
+        // If the number of
+        // factors is not 2.
+        else{ 
+            // Return false, indicating
+            // that the number is not prime.
+            return false; 
+        }
+    }
+
+    public static void main(String[] args) {
+        int n = 1483;
+        boolean isPrime = checkPrime(n);
+        if(isPrime){
+            System.out.println(n + " is a prime number.");
+        } else {
+            System.out.println(n + " is not a prime number.");
+        }
+    }
+}
+
+4.Prime Numbers in a given range
+public class Main {
+  public static boolean isPrime(int num) {
+    if (num == 1)
+      return false;
+    for (int i = 2; i < Math.sqrt(num); i++) {
+      if (num % i == 0)
+        return false;
+    }
+    return true;
+  }
+  public static void PrintPrimesbwrange(int a, int b) {
+    for (int i = a; i <= b; i++) {
+      if (isPrime(i)) {
+        System.out.print(i + " ");
+      }
+    }
+  }
+  public static void main(String args[]) {
+    int a = 10, b = 17;
+    PrintPrimesbwrange(a, b);
+  }
+}
+
+5.Check if a number is Armstrong Number or not
+import java.lang.Math;
+
+public class ArmstrongNumber {
+    // Function to check if a
+    // number is an Armstrong number
+    public static boolean isArmstrong(int num) {
+        // Calculate the number of
+        // digits in the given number
+        int k = String.valueOf(num).length();
+        // Initialize the sum of digits
+        // raised to the power of k to 0
+        int sum = 0;
+        // Copy the value of the input
+        // number to a temporary variable n
+        int n = num;
+        // Iterate through each
+        // digit of the number
+        while(n > 0){
+            // Extract the last
+            // digit of the number
+            int ld = n % 10;
+            // Add the digit raised to
+            // the power of k to the sum
+            sum += Math.pow(ld, k); 
+            // Remove the last digit
+            // from the number
+            n = n / 10;
+        }
+        // Check if the sum of digits raised to
+        // the power of k equals the original number
+        return sum == num ? true : false;
+    }
+
+    public static void main(String[] args) {
+        int number = 153;
+        if (isArmstrong(number)) {
+            System.out.println(number + " is an Armstrong number.");
+        } else {
+            System.out.println(number + " is not an Armstrong number.");
+        }
+    }
+}
+
+6.Check whether a number is Perfect Number or not
+import java.io.*;
+import java.util.*;
+
+class takeuforward {
+
+  // Driver code
+
+  static boolean isPerfect(int n) {
+    int sum = 0;
+    for (int i = 1; i * i <= n; i++) {
+      if (n % i == 0) {
+       
+        if (i * i == n || i == 1)
+          sum = sum + i;
+        else sum = sum + i + n / i;
+
+      }
+    }
+    
+    if (sum == n)
+      return true;
+    else return false;
+  }
+
+  public static void main(String[] args) {
+
+    boolean ex1 = isPerfect(6);
+    boolean ex2 = isPerfect(15);
+    boolean ex3 = isPerfect(28);
+
+    if (ex1 == true) {
+      System.out.println("6 is a perfect Number");
+    } else System.out.println("6 is a not perfect Number");
+
+    if (ex2 == true) {
+      System.out.println("15 is a perfect Number");
+    } else System.out.println("15 is not a perfect Number");
+
+    if (ex3 == true) {
+      System.out.println("28 is a perfect Number");
+    } else System.out.println("28 is not a perfect Number");
+
+  }
+}
+
+7.Even or Odd
+import java.util.*;
+
+public class tuf {
+  public static void main(String[] args) {
+    int n = 5;
+    if (remainder(n) == 0) {
+      System.out.println(n + " is even.");
+    } else {
+      System.out.println(n + " is odd.");
+    }
+  }
+  public static int remainder(int n) {
+    return (n % 2);
+  }
+}
+
+8.Postive or Negative
+import java.util.*;
+
+public class tuf {
+
+  public static void main(String[] args) {
+
+    int n = 5;
+    check(n);
+    n = -6;
+    check(n);
+  }
+  public static void check(int n) {
+    if (n > 0) {
+      System.out.println(n + " is positive.");
+    } else {
+      System.out.println(n + " is negative.");
+    }
+  }
+}
+
+9.Sum of N Natural numbers
+import java.util.*;
+
+public class tuf {
+
+  public static void main(String[] args) {
+
+    solve(5);
+    solve(6);
+  }
+  public static void solve(int N) {
+    int sum = N * (N + 1) / 2;
+    System.out.println("The sum of the first " + N + " numbers is: " + sum);
+  }
+}
+
+10.sum of an AP series
+class APSeries {
+    // Method to calculate the sum of an AP series
+    static float sumOfAP(float a, float d, int n) {
+        float sum = (n / 2.0f) * (2.0f * a + (n - 1) * d);
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        float a = 1.5f, d = 3.0f;
+        int n = 5;
+        System.out.println("Sum of Given AP Series: " + sumOfAP(a, d, n));
+    }
+}
+
+11.Sum of GP
+import java.util.*;
+public class Main {
+  public static float SumofGP(float a, float r, int n) {
+    float sum = a * ((float) Math.pow(r, n) - 1) / (r - 1);
+    return sum;
+  }
+
+  public static void main(String args[]) {
+    float a = 2; // First term of G.P.
+    float r = 2; // common ratio of G.P.
+    int n = 4; // Number of terms of G.P.
+    System.out.println("Sum of GP Series is "+SumofGP(a, r, n));
+  }
+}
+
+12.
