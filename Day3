@@ -336,4 +336,283 @@ public class Main {
   }
 }
 
-12.
+12.Greatest of Two numbers
+public class Main {
+  public static void main(String args[]) {
+    double num1 = 1.123;
+    double num2 = 1.124;
+    if (num1 < num2) {
+      System.out.println("The greatest of two numbers is "+num2);
+    } else {
+      System.out.println("The greatest of two numbers is "num1);
+    }
+  }
+}
+
+13.Greatest of three numbers
+public class Main {
+  public static void main(String args[]) {
+    double num1 = 1.123, num2 = 1.124, num3 = 1.125;
+    if (num1 > num2 && num1 > num3) {
+      System.out.println("The greatest of the three numbers is "+num1);
+    } else if (num2 > num1 && num2 > num3) {
+      System.out.println("The greatest of the three numbers is "+num2);
+    } else {
+      System.out.println("The greatest of the three numbers is "+num3);
+    }
+  }
+}
+
+14.Leap or not
+public class Main {
+  public static void main(String args[]) {
+    int year = 1992;
+    if (((year % 4 == 0) && (year % 100 != 0)) ||(year % 400 == 0)) {
+      System.out.println("Yes");
+    } else {
+      System.out.println("No");
+    }
+  }
+}
+
+15.Reverse digits of a number
+import java.io.*;
+class Test
+{
+static private int Rev(int n)
+{
+	int d;
+	int rev = 0;
+	while (n != 0)
+	{
+		d = n % 10;
+		rev = rev * 10 + d;
+		n = n / 10;
+	}
+
+	return rev;
+}
+public static void main(String[] args)
+{
+	int n = 472;
+	System.out.print("The reverse of the given number is: "+Rev(n));
+}
+}
+
+16.Maximum and Minimum Digit in a Number
+import java.io.*;
+class Test
+{
+static private void MinMax(int n)
+{
+	int d;
+	int mini = Integer.MAX_VALUE;
+	int maxi = Integer.MIN_VALUE;
+	while (n != 0)
+	{
+		d = n % 10;
+		mini = Math.min(mini,d);
+		maxi = Math.max(maxi,d);
+		n = n / 10;
+	}
+
+	System.out.println("The minimum number is: "+mini);
+	System.out.print("The maximum number is: "+maxi);
+}
+public static void main(String[] args)
+{
+	int n = 4726;
+	MinMax(n);
+}
+}
+
+17.Print Fibonacci Series up to Nth term
+class Recursion {
+    
+    static int fibonacci(int N){
+        
+            // Base Condition.
+            if(N <= 1){
+                
+                return N;
+            }
+            
+            // Problem broken down into 2 functional calls
+            // and their results combined and returned.
+            int last = fibonacci(N-1);
+            int slast = fibonacci(N-2);
+            
+            return last + slast;
+            
+
+    }
+    public static void main(String[] args) {
+
+       // Here, let’s take the value of N to be 4.
+       int N = 4;
+       System.out.println(fibonacci(N));
+    }
+}
+
+18.Factorial of a Number
+int factorial(n)
+{
+   if(n == 0)
+   {
+     return 1;
+   }
+
+return n * factorial(n-1);
+
+}
+
+main()
+{
+   input(n);
+   factorial(n);
+
+}
+
+19.Power of a Number
+public class Main {
+    public static void main(String[] args) {
+        int x = 5, n = 3;
+        int ans = 1;
+        for (int i = 0; i < n; i++) {
+            ans = ans * x;
+        }
+        System.out.println(x + " raised to the power " + n + " is " + ans);
+    }
+}
+
+20.Factors of a Given Number
+import java.util.*;
+ 
+public class tuf {
+     static void Divisor(int n)
+        {
+            for (int i=1;i<=Math.sqrt(n); i++)
+            {  
+                if (n%i==0)
+                {
+                    // If divisors are equal, print only one
+                    if (n/i == i)
+                        System.out.print(" "+ i);
+         
+                    else // Otherwise print both
+                        System.out.print(i+" " + n/i + " " );
+                } 
+            }
+        }
+        public static void main(String args[])
+        {   int n = 14;
+            System.out.print("Factors of " + n + " are: ");
+            Divisor(n);;
+        }
+}
+
+21.Print all Prime Factors of the given number
+import java.util.ArrayList;
+
+public class Main {
+    public static ArrayList<Integer> getPrimeFactors(int n) {
+        // Declare an ArrayList to store
+        // the prime factors of n.
+        ArrayList<Integer> primeFactors = new ArrayList<>();
+
+        // Loop from 2 up to n
+        for (int i = 2; i <= n; i++) {
+            // Check if n is divisible by i
+            if (n % i == 0) {
+                // If divisible, add i to
+                // the primeFactors ArrayList
+                primeFactors.add(i);
+            }
+            // Continue dividing n by i
+            // until it's no longer divisible
+            while (n % i == 0) {
+                n = n / i;
+            }
+        }
+        // Return the ArrayList
+        // containing the prime factors of n.
+        return primeFactors;
+    }
+
+    public static void main(String[] args) {
+        int n = 60;
+        ArrayList<Integer> ans = getPrimeFactors(n);
+        System.out.print("Prime Factors for " + n + ": ");
+        for (int factor : ans) {
+            System.out.print(factor + " ");
+        }
+        System.out.println();
+    }
+}
+
+22.Check if a number is a Strong Number or not
+public class Main {
+   //Function to calculate the factorial of the individual digits
+   static int Factorial(int n) {
+      int fact = 1;
+      for (int i = 1; i <= n; i++) {
+         fact = fact * i;
+      }
+      return fact;
+   }
+
+   //Function to compute sum of factorials
+   static int Strong_No(int num) {
+      int sum = 0;
+
+      //Extract all the digits from num
+      while (num > 0) {
+         int digit = num % 10;
+         sum = sum + Factorial(digit);
+         num = num / 10;
+      }
+      return sum;
+   }
+
+   public static void main(String[] args) {
+
+      int number = 145;
+      int answer = Strong_No(number);
+
+      if (answer == number && number != 0) {
+
+         System.out.println("YES");
+      } 
+      else {
+         System.out.println("NO");
+      }
+   }
+}
+
+23.Automorphic number
+class Solution {
+
+  public static boolean isAutomorphic(int N) {
+    int sq = N * N;
+
+    while (N > 0) {
+
+      // Check if last digit is equal or not
+      if (N % 10 != sq % 10)
+        return false;
+
+      // Reducing the number and its square
+      N /= 10;
+      sq /= 10;
+    }
+
+    return true;
+  }
+  public static void main(String args[]) {
+    int n = 25;
+    if(isAutomorphic(n)==true)
+    System.out.println("Automorphic Number");
+    else
+    System.out.println("Not Automorphic Number");
+  }
+}     
