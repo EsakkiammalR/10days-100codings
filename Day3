@@ -616,3 +616,273 @@ class Solution {
     System.out.println("Not Automorphic Number");
   }
 }     
+
+23.GCD and LCM of numbers
+import java.util.*;
+class Main {
+       static int gcd(int num1,int num2){
+        while(num2>0){
+            int temp=num2;
+            num2=num1%num2;
+            num1=temp;
+        }
+        return num1;
+       }
+       static int lcm(int num1,int num2){
+           return (num1*num2)/gcd(num1,num2);
+       }
+       
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter num1:");
+        int num1=sc.nextInt();
+        System.out.println("Enter num2:");
+        int num2=sc.nextInt();
+    
+        System.out.println("Lcm of " + num1 + " and " + num2 + " is " + lcm(num1,num2));
+    }
+}
+
+24.Harzard number or not
+import java.util.*;
+class Main {
+       static void harzardnum(int n){
+           int sum=0;
+           int orgnum=n;
+        while(n>0){
+            int id=n%10;
+            sum+=id;
+            n/=10;
+        }
+        if(orgnum%sum==0){
+            System.out.println("Yes it is a Harshad number");
+        }
+        else{
+              System.out.println("NO, it is a Harshad number");
+        }
+       }
+       
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter n:");
+        int n=sc.nextInt();
+        harzardnum(n);
+    }
+}
+
+25.Abundant Number
+public class Main {
+  public static void main(String args[]) {
+    int n = 18;
+    int sum = 0;
+    for (int i = 1; i <= n; i++) {
+      if (n % i == 0) {
+        sum += i;
+      }
+    }
+    sum-=n;
+    if (sum > n) {
+      System.out.print("Abundant Number");
+    } else {
+      System.out.print("Not Abundant Number");
+    }
+  }
+}
+
+26.Sum of digits
+import java.io.*;
+class Test
+{
+static private int getSum(int n)
+{
+	int d;
+	int sum = 0;
+	while (n != 0)
+	{
+		d = n % 10;
+		sum += d;
+		n = n / 10;
+	}
+	return sum;
+}
+public static void main(String[] args)
+{
+	int n = 472;
+	System.out.print("Sum of digits of the given number is "+getSum(n));
+}
+}
+
+27.The sum of the numbers in the given range
+public class Main {
+  public static void main(String args[]) {
+    int l = 2, r = 7;
+    //sum(1 to r) - sum(1 to l-1)
+    int ans = (r * (r + 1)) / 2 - ((l - 1) * (l)) / 2;
+    System.out.print("The sum of the numbers in the given range is "+ans);
+  }
+}
+
+28.permutation
+public class Main {
+  public static void main(String args[]) {
+    int n = 6, r = 4;
+    int ans = 1;
+    for (int i = n; i >= n - r + 1; i--) {
+      ans *= i;
+    }
+    System.out.print(ans);
+  }
+}
+
+29.Add teo fractions
+public class Main {
+  static int _gcd(int a, int b) {
+    if (b == 0) {
+      return a;
+    }
+    return _gcd(b, a % b);
+  }
+  static void simple(int num3, int den3) {
+    int gcd = _gcd(num3, den3);
+    //dividing num and den by gcd to get the fraction
+    //in the simplest form.
+    num3 /= gcd;
+    den3 /= gcd;
+  }
+  public static void main(String args[]) {
+    int num1 = 3, den1 = 4, num2 = 1, den2 = 7, num3, den3;
+    int lcm = (den1 * den2) / _gcd(den1, den2);
+    //answer's denominator will be lcm of den1 and den2
+    den3 = lcm;
+    //changing numerators to have same denominator and then adding
+    num3 = num1 * (den3 / den1) + num2 * (den3 / den2);
+    simple(num3, den3);
+    System.out.println(num1 + "/" + den1 + " + " + num2 + "/" + den2 + " = " + num3 + "/" + 
+    den3);
+  }
+}
+
+30.replaceZerosWithOnes
+public class Main {
+   static int replaceZerosWithOnes(int num) {
+      if (num == 0) {
+         return 1;
+      }
+      int ans = 0, tmp = 1;
+      while (num > 0) {
+         int d = num % 10;
+         if (d == 0) {
+            d = 1;
+         }
+         ans = d * tmp + ans;
+         num = num / 10;
+         tmp = tmp * 10;
+      }
+      return ans;
+   }
+
+   public static void main(String[] args) {
+
+      int n = 204;
+      int result = replaceZerosWithOnes(n);
+      System.out.println("After replacing zeros with ones " + n + " becomes " + result);
+   }
+} 
+
+31.Express given number as Sum of Two Prime Numbers
+import java.util.*;
+
+public class Solution {
+
+       static boolean prime(int n) {
+
+              if (n <= 1)
+                     return false;
+
+              for (int i = 2; i * i <= n; i++) {
+                     if (n % i == 0) {
+                            return false;
+                     }
+              }
+
+              return true;
+       }
+
+       static boolean isPrime(int n) {
+
+              if (prime(n) && prime(n - 2)) {
+                     return true;
+              } else {
+                     return false;
+              }
+       }
+
+       public static void main(String[] args) {
+
+              int n = 19;
+
+              if (isPrime(n)) {
+                     System.out.println("Yes");
+              } else if (isPrime(n)) {
+                     System.out.println("No");
+              }
+       }
+}
+
+32.areaOfCircle
+class Solution {
+
+  public static void areaOfCircle(int n) {
+
+    double ans = 3.14 * n * n; // Area of circle = πr2
+    System.out.print("Area of circle is : " + ans);
+
+  }
+  public static void main(String args[]) {
+    int n = 5;
+    areaOfCircle(n);
+  }
+}
+
+33.Program to Find Roots of a quadratic equation
+import java.util.*;
+ 
+public class tuf {
+    static void Roots(int a, int b, int c)
+    {
+        if (a == 0) {
+            System.out.println("Invalid");
+            return;
+        }
+ 
+        int d = b * b - 4 * a * c;
+        double sqrt_val = Math.sqrt(Math.abs(d));
+ 
+        if (d > 0) {
+            System.out.println("Roots are real and different ");
+           
+            double root1 = (double)(-b + sqrt_val) / (2 * a);
+            double root2 = (double)(-b - sqrt_val) / (2 * a);
+            System.out.println(root1 + "\n"+root2);
+            }
+        else if (d == 0) {
+            System.out.println("Roots are real and same ");
+            double root1 = -(double)b / (2 * a);
+            double root2 = -(double)b / (2 * a);
+            System.out.println(root1 + "\n"+root2);
+        }
+        else // d < 0
+        {
+            System.out.println("Roots are complex ");
+ 
+            System.out.println(-(double)b / (2 * a) + " + i"+ sqrt_val + "\n"+
+                               -(double)b / (2 * a) + " - i" + sqrt_val);
+        }
+    }
+        public static void main(String args[])
+        {
+             int a = 1, b = -3, c = -10;
+             
+             Roots(a, b, c);
+        }
+}
