@@ -175,4 +175,70 @@ static String solve(String input) {
   }
 }
 
+8.Reverse a String
+class Solution {
+  public static void main(String[] args) {
+    char[] str = "HELLO".toCharArray();
+    int i = 0, j = str.length - 1;
 
+    while (i < j) {
+      char temp = str[i];
+      str[i] = str[j];
+      str[j] = temp;
+      i++;
+      j--;
+    }
+
+    System.out.println("The reversed string is- " + new String(str));
+  }
+}
+
+9.Remove Duplicates in-place from Sorted Array
+public class Solution {
+
+    static int findSum(String str) {
+        int tempSum = 0, sum = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            char s = str.charAt(i);
+
+            if (Character.isDigit(s)) {
+                tempSum = tempSum * 10 + (s - '0'); // Convert char to number
+            } else {
+                sum += tempSum;
+                tempSum = 0;
+            }
+        }
+
+        return sum + tempSum;
+    }
+
+    public static void main(String[] args) {
+        String str = "1bc268";
+        System.out.println("Sum: " + findSum(str));
+    }
+}
+
+10.Capitalize first and last character of each word of a string
+public class TUF {
+    public static String Capitalize(String str) {
+        StringBuffer sb = new StringBuffer(str);
+        int size = str.length();
+
+        for (int i = 0; i < size; i++) {
+            if (i == 0 || i == size - 1) { 
+                sb.setCharAt(i, Character.toUpperCase(str.charAt(i)));
+            } else if (str.charAt(i) == ' ' && i > 0 && i < size - 1) { 
+                sb.setCharAt(i - 1, Character.toUpperCase(str.charAt(i - 1)));
+                sb.setCharAt(i + 1, Character.toUpperCase(str.charAt(i + 1)));
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String args[]) {
+        String str = "Take u Forward is Awesome";
+        System.out.println("Modified String: " + Capitalize(str));
+    }
+}
