@@ -1,0 +1,178 @@
+1.Palindrome or not
+import java.util.*;
+class test{
+static private boolean isPalindrome(String s) {
+    int left=0,right=s.length()-1;
+    while(left<right){
+        char l=s.charAt(left),r=s.charAt(right);
+        if(!Character.isLetterOrDigit(l)){
+            left++;
+        }
+        else if(!Character.isLetterOrDigit(r)){
+            right--;
+        }
+        else if(Character.toLowerCase(l)!=Character.toLowerCase(r)){
+            return false;
+        }
+        else{
+            left++;
+            right--;
+            
+        }
+    }
+    return true;
+}
+    public static void main(String[] args) {
+        String s="Madam";
+        boolean ans=isPalindrome(s);
+        if(ans=true){
+        System.out.println(" is palindrome");
+        }
+        else{
+        System.out.println( " is not palindrome");
+        }
+        
+    }
+}
+
+2.Count vow.cons and whitespace
+import java.util.*;
+
+class Test {
+    public static void Count(String str, int len) {
+        int vowels = 0, consonants = 0, whitespace = 0;
+        str = str.toLowerCase(); // Convert string to lowercase
+
+        for (int i = 0; i < len; i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                vowels++; // Count vowels
+            else if (ch >= 'a' && ch <= 'z')
+                consonants++; // Count consonants
+            else if (ch == ' ')
+                whitespace++; // Count whitespace
+        }
+        
+        // Printing results
+        System.out.println("Vowels: " + vowels);
+        System.out.println("Consonants: " + consonants);
+        System.out.println("Whitespace: " + whitespace);
+    }
+
+    public static void main(String args[]) {
+        String str = "Esakkiammal";
+        int len = str.length();
+        Count(str, len);
+    }
+}
+
+3.Find the ASCII value of a character
+import java.util.*;
+class test{
+    public static void Ascii(char ch){
+        int ascii=ch;
+        System.out.println("The Ascii value of " + ch + " is " + ascii);
+    }
+    public static void main(String[] args){
+        char c='r';
+        Ascii(c);
+    }
+}
+
+4.Removing Vowels
+import java.util.*;
+
+public class Main {
+  public static String RemoveVowels(String str) {
+    StringBuilder result = new StringBuilder();
+
+    for (char ch : str.toCharArray()) {
+      if (ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u' &&
+          ch != 'A' && ch != 'E' && ch != 'I' && ch != 'O' && ch != 'U') {
+        result.append(ch);
+      }
+    }
+    
+    return result.toString();
+  }
+
+  public static void main(String[] args) {
+    String str = "take u forward";
+    System.out.println("String after removing the vowels: " + RemoveVowels(str));
+  }
+}
+
+5.Removeing white space
+import java.util.*;
+
+public class Main {
+  public static String RemoveWhitespace(String str) {
+    StringBuilder result = new StringBuilder();
+
+    for (char ch : str.toCharArray()) {
+      if (ch!=' ') {
+        result.append(ch);
+      }
+    }
+    
+    return result.toString();
+  }
+
+  public static void main(String[] args) {
+    String str = "take u forward";
+    System.out.println("String after removing the vowels: " + RemoveWhitespace(str));
+  }
+}
+
+6.Remove characters from a string except alphabets
+public class tUf {
+  public static String solve(String str, int n) {
+    StringBuffer ans = new StringBuffer();
+
+    for (int i = 0; i < n; i++) {
+      int ascii = (int) str.charAt(i); //ascii value
+
+      if ((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)) // if alphabets
+        ans.append(str.charAt(i));
+    }
+
+    return ans.toString();
+  }
+  public static void main(String args[]) {
+    String str = "take12% *&u ^$#forward";
+    int n = str.length();
+
+    System.out.println("Resultant string:");
+    System.out.println(solve(str, n));
+  }
+}
+
+7.Remove Brackets
+import java.io.*;
+import java.util.*;
+
+class takeuforward {
+static String solve(String input) {
+   
+     StringBuilder answer = new StringBuilder("");
+     for(int i=0 ; i<input.length(); i++){
+         if(input.charAt(i)!='(' && input.charAt(i) != ')' )
+            answer.append(input.charAt(i));
+     }
+     return answer.toString();
+  }
+
+  public static void main(String[] args) {
+
+    String input1 = "a+((b-c)+d)";
+    String input2 = "(((a-b))+c)";
+
+    System.out.println("Original String: "+input1);
+    System.out.println("After removing brackets: "+solve(input1));
+    System.out.println("Original String: "+input2);
+    System.out.println("After removing brackets: "+solve(input2));
+    
+  }
+}
+
+
